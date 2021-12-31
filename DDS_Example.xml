@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Commands>
+    <TestName>First test example</TestName>
+
+    <TesterName>Nikolay Nikolov</TesterName>
+
+    <OpenChannel>ChannelOne</OpenChannel>
+    <OpenChannel>ChannelTwo</OpenChannel>
+
+    <SetTemp>22.5</SetTemp>
+
+    <sleep>2000</sleep>
+
+    <SetDoorStatus>
+        <Door>ChannelTwo</Door>
+        <Status>ChannelTwo</Status>
+    </SetDoorStatus>
+
+    <sleep>1500</sleep>
+
+    <SetTemp>22.5</SetTemp>
+
+</Commands>

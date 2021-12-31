@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- Types -->
+
+<xs:simpleType name="TypeName">
+    <xs:annotation>
+        <xs:documentation>Name</xs:documentation>
+    </xs:annotation>  
+    <xs:restriction base="xs:string">
+        <xs:minLength value="2"/>
+        <xs:maxLength value="2"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="TypeTimeMS">
+    <xs:annotation>
+        <xs:documentation>Delays the process</xs:documentation>
+    </xs:annotation>  
+    <xs:restriction base="xs:integer">
+        <xs:minInclusive value="2"/>
+        <xs:maxInclusive value="10000"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="TypeTemperature">
+    <xs:annotation>
+        <xs:documentation>Temperature</xs:documentation>
+    </xs:annotation>  
+    <xs:restriction base="xs:double">
+        <xs:minInclusive value="-100.0"/>
+        <xs:maxInclusive value="+200.0"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="TypeChannelName">
+    <xs:annotation>
+        <xs:documentation>Name of the DDS channel</xs:documentation>
+    </xs:annotation>  
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="ChannelOne"/>
+        <xs:enumeration value="ChannelTwo"/>
+        <xs:enumeration value="ChannelThree"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="TypeDoor">
+    <xs:annotation>
+        <xs:documentation>Door of the car</xs:documentation>
+    </xs:annotation>  
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="Front left"/>
+        <xs:enumeration value="Front right"/>
+        <xs:enumeration value="Rear left"/>
+        <xs:enumeration value="Rear right"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="TypeDoorStatus">
+    <xs:annotation>
+        <xs:documentation>Status of the door</xs:documentation>
+    </xs:annotation>  
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="Open"/>
+        <xs:enumeration value="closed"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- End Types -->
+
+
+
+<!-- Commands -->
+
+<xs:element name="Commands">
+    <!-- Main node settings: -->
+    <xs:annotation>
+        <xs:documentation>Sequence of test commands</xs:documentation>
+    </xs:annotation>
+ 
+    <xs:complexType>
+    <xs:sequence>
+    <!-- -->
+    <xs:element name="TestName">
+        <xs:annotation>
+            <xs:documentation>Name of the test</xs:documentation>
+        </xs:annotation>
+        <xs:type>"xs:TypeName"</xs:type>
+    </xs:element>
+
+    <xs:element name="TesterName">
+        <xs:annotation>
+            <xs:documentation>Name of the tester</xs:documentation>
+        </xs:annotation>
+        <xs:type>"xs:TypeName"</xs:type>
+    </xs:element>
+
+    <xs:element name="Sleep">
+        <xs:annotation>
+            <xs:documentation>Delays the process</xs:documentation>
+        </xs:annotation>
+        <xs:type>"xs:TypeTimeMS"</xs:type>
+    </xs:element>
+
+    <xs:element name="OpenChannel">
+        <xs:annotation>
+            <xs:documentation>Opens a DDS chanel</xs:documentation>
+        </xs:annotation>
+        <xs:type>"xs:TypeChannelName"</xs:type>
+    </xs:element>
+
+    <xs:element name="SetTemp">
+        <xs:annotation>
+            <xs:documentation>Sets temperature</xs:documentation>
+        </xs:annotation>
+        <xs:type>"xs:TypeTemperature"</xs:type>
+    </xs:element>
+
+    <xs:element name="SetDoorStatus">
+        <xs:annotation>
+            <xs:documentation>Sets status of the door</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Door" type="xs:TypeDoor" minOccurs="1"/>
+                <xs:element name="Status" type="xs:TypeDoorStatus" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- Main node: -->
+    </xs:sequence>
+    </xs:complexType>
+    <!-- -->
+</xs:element>
+
+<!-- End Commands -->
+
+</xs:schema> 
