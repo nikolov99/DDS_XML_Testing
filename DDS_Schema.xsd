@@ -62,7 +62,7 @@
     </xs:annotation>  
     <xs:restriction base="xs:string">
         <xs:enumeration value="Open"/>
-        <xs:enumeration value="closed"/>
+        <xs:enumeration value="Closed"/>
     </xs:restriction>
 </xs:simpleType>
 

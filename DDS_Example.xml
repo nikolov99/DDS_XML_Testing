@@ -13,11 +13,16 @@
     <Sleep>2000</sleep>
 
     <SetDoorStatus>
-        <Door>ChannelTwo</Door>
-        <Status>ChannelTwo</Status>
+        <Door>Front left</Door>
+        <Status>Open</Status>
     </SetDoorStatus>
 
     <Sleep>1500</sleep>
+
+    <SetDoorStatus>
+        <Door>Front left</Door>
+        <Status>Closed</Status>
+    </SetDoorStatus>
 
     <SetTemp>22.5</SetTemp>
 
